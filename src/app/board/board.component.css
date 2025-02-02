@@ -1,0 +1,17 @@
+main {
+    display:grid;
+    grid-template-columns: 200px 200px 200px;
+    grid-gap:5px;
+}
+
+app-square {
+    display: flex;  
+    justify-content: center;  /*centers horizontally*/
+    align-items: center;  /* Centers vertically */
+    font-size: 2rem; 
+    font-weight: bold;
+    height: 100px;
+    border: 2px solid black; 
+    text-align: center; 
+
+}
