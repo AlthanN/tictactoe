@@ -13,6 +13,7 @@ export class BoardComponent {
   squares: any;
   xIsNext: boolean = false;
   winner: string = '';
+  gameOver: boolean = false;
   isVisible: boolean = true;
   constructor() {}
   ngOnInit() {
@@ -23,6 +24,7 @@ export class BoardComponent {
     this.squares = Array(9).fill(null);
     this.winner = '';
     this.xIsNext = true;
+    this.gameOver = false;
     
   }
 
@@ -31,7 +33,10 @@ export class BoardComponent {
   }
 
   makeMove(index: number) {
-    if(!(this.squares[index] && !this.winner)) {
+    if(this.gameOver) {
+      return;
+    }
+    if(!(this.squares[index])) {
       this.squares[index] = this.player;
       this.xIsNext = !this.xIsNext;
       this.winner = this.calculateWinner();
@@ -58,6 +63,7 @@ export class BoardComponent {
         this.squares[a] === this.squares[c]
       ) {
         this.winner = this.squares[a];
+        this.gameOver = true;
         return this.squares[a];
       }
     }
